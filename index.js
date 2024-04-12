@@ -111,9 +111,9 @@ app.listen(port,()=>{
     console.log(`server is live at ${port}`);
 });
 
-app.get('/',(request,response)=>{
-    response.send('site working');
-});
+// app.get('/',(request,response)=>{
+//     response.send('site working');
+// });
 
 app.get('/listings',async(request,response,next)=>{
     Listing.find().populate('reviews')
