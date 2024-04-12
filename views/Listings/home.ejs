@@ -39,7 +39,7 @@
 <body>
     <div class="container-fluid row-md-6" id="cards-container">
         <% for(let i=0; i<result.length; i++) { %>
-        <a href="http://localhost:3000/listings/<%=result[i]['id']%>">
+        <a href="/listings/<%=result[i]['id']%>">
             <div class="card">
                 <div style="width: 20rem; height: 19rem;" class="image-holder">
                     <img style="width: 20rem; height: 19rem;" src="<%=result[i]['image']%>" class="card-img-top" alt="...">

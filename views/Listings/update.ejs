@@ -1,7 +1,7 @@
 <% layout('Layouts/boilerplate.ejs') %>
 <body>
     <h2 id="update-heading">Update Listing</h2>
-    <form id="update-form" action="http://localhost:3000/listings/<%=result['id']%>/update/" class="row g-3 needs-validation" novalidate method="post" enctype="multipart/form-data">
+    <form id="update-form" action="/listings/<%=result['id']%>/update/" class="row g-3 needs-validation" novalidate method="post" enctype="multipart/form-data">
         <div class="form-floating col-md-6 mb-3">
             <input type="text" name="title" class="form-control" value="<%=result['title']%>" id="titleInput" required>
             <label for="titleInput">Title</label>

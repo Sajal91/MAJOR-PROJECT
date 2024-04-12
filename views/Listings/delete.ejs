@@ -6,8 +6,8 @@
     <div style="margin-inline: 10rem; margin-top: 10rem; text-align: center; padding-block: 0.1rem;" class="alert alert-danger" role="alert">
         <h3>Delete This Listing ?</h3>
     </div>
-    <form style="margin-bottom: 9rem; display: flex; flex-direction: row; justify-content: center;" action="http://localhost:3000/listings/<%=id%>/delete" method="post">
+    <form style="margin-bottom: 9rem; display: flex; flex-direction: row; justify-content: center;" action="/listings/<%=id%>/delete" method="post">
         <button class="btn btn-danger" style="padding-inline: 2rem; font-weight: 600;" type="submit">Yes</button>&nbsp;
-        <a class="btn btn-light" style="padding-inline: 2rem; font-weight: 600;" href="http://localhost:3000/listings/<%=id%>">No</a>
+        <a class="btn btn-light" style="padding-inline: 2rem; font-weight: 600;" href="/listings/<%=id%>">No</a>
     </form>
 </body>

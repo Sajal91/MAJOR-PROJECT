@@ -33,13 +33,13 @@
                 </div>
                 <% if(temp == true) { %>
                     <div class="user-listing-btn-holder">
-                        <a style="font-weight: 700;" class="btn btn-primary col-3" href="http://localhost:3000/listings/<%=result['id']%>/update">Update</a>
-                        <a style="font-weight: 700;" class="btn btn-danger col-3" href="http://localhost:3000/listings/<%=result['id']%>/delete">Delete</a>
+                        <a style="font-weight: 700;" class="btn btn-primary col-3" href="/listings/<%=result['id']%>/update">Update</a>
+                        <a style="font-weight: 700;" class="btn btn-danger col-3" href="/listings/<%=result['id']%>/delete">Delete</a>
                     </div>
                 <% } else { %>
                     <div class="user-listing-btn-holder">
-                        <a style="font-weight: 700;" class="btn btn-primary col-3 disabled" href="http://localhost:3000/listings/<%=result['id']%>/update">Update</a>
-                        <a style="font-weight: 700;" class="btn btn-danger col-3 disabled" href="http://localhost:3000/listings/<%=result['id']%>/delete">Delete</a>
+                        <a style="font-weight: 700;" class="btn btn-primary col-3 disabled" href="/listings/<%=result['id']%>/update">Update</a>
+                        <a style="font-weight: 700;" class="btn btn-danger col-3 disabled" href="/listings/<%=result['id']%>/delete">Delete</a>
                     </div>
                 <% } %>
             </div>
@@ -60,7 +60,7 @@
                         <h6 class="card-title"><%=result.reviews[i].createdAt.toLocaleString().slice(0,25)%></h6>
                         <p style="font-weight: 700;" class="card-text"><%=result.reviews[i].comment.trimEnd(" ").trimStart(" ")%></p>
                         <% if(authenticated == true) { %>
-                            <form action="http://localhost:3000/listings/<%=result['id']%>/reviews/<%=result.reviews[i]['id']%>" method="post">
+                            <form action="listings/<%=result['id']%>/reviews/<%=result.reviews[i]['id']%>" method="post">
                                 <button class="btn btn-danger" type="submit">Delete</button>
                             </form>
                         <% } else { %>
@@ -73,7 +73,7 @@
     <% } %>
     <% if(authenticated == true) { %>
         <div id="review-container" class="container col-6 mt-5">
-            <form action="http://localhost:3000/listings/<%=result['id']%>/reviews" class="form-control needs-validation" method="post" novalidate>
+            <form action="listings/<%=result['id']%>/reviews" class="form-control needs-validation" method="post" novalidate>
                 <!-- <div>
                     <label for="ratingId" style="font-weight: 800;" class="form-label">Provide your Feedback</label>
                     <input type="range" class="form-range" min="1" max="5" name="rating" id="ratingId">
