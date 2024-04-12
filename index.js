@@ -111,9 +111,23 @@ app.listen(port,()=>{
     console.log(`server is live at ${port}`);
 });
 
-// app.get('/',(request,response)=>{
-//     response.send('site working');
-// });
+app.get('/',async(request,response)=>{
+    Listing.find().populate('reviews')
+    .then((result)=>{
+        let avgRatingArr = [];
+        for(let i = 0; i < result.length; i++) {
+            let ratingSum = 0;
+            for(let j = 0; j < result[i].reviews.length; j++) {
+                ratingSum = ratingSum + result[i].reviews[j].rating;
+            }
+            let avgRating = ratingSum/result[i].reviews.length;
+            avgRatingArr.push(avgRating);
+        }
+        response.render('Listings/home.ejs',{result, avgRatingArr});
+    }).catch((error)=>{
+        next(error);
+    });
+});
 
 app.get('/listings',async(request,response,next)=>{
     Listing.find().populate('reviews')
