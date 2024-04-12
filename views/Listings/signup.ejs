@@ -1,0 +1,34 @@
+<% layout('Layouts/boilerplate.ejs') -%>
+<% if(userExists) { %>
+    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=userExists%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<body>
+    <h2 style="margin-top: 8rem;" id="newListing-heading">Welcome to WanderLust</h2>
+    <form style="margin-bottom: 10rem;" id="newListing-form" action="http://localhost:3000/signup" class="row g-3 needs-validation" novalidate method="post">
+
+        <div class="form-floating col-md-12 mb-3">
+            <input type="email" name="email" class="form-control" id="titleInput" placeholder="" required>
+            <label for="emailInput">Email</label>
+            <div class="invalid-feedback">Invalid Email</div>
+        </div>
+
+        <div class="form-floating col-md-6 mb-3">
+            <input type="text" name="username" class="form-control" placeholder="" id="usernameInput" required>
+            <label for="usernameInput" class="form-label">Username</label>
+            <div class="invalid-feedback">Invalid Username</div>
+        </div>
+        
+        <div class="form-floating col-md-6 mb-3">
+            <input type="password" name="password" class="form-control" placeholder="" id="passwordInput" required>
+            <label for="passwordInput" class="form-label">Password</label>
+            <div class="invalid-feedback">Invalid Password</div>
+        </div>
+
+        <div class="col-12">
+            <button style="font-weight: 700;" type="submit" class="btn btn-danger">Sign up</button>
+        </div>
+    </form>
+</body>

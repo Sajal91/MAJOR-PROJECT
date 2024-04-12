@@ -1,0 +1,46 @@
+<% layout('Layouts/boilerplate.ejs') %>
+<body>
+    <h2 id="newListing-heading">Create Listing</h2>
+    <form id="newListing-form" action="http://localhost:3000/listings/new/listing/" class="row g-3 needs-validation" novalidate method="post" enctype="multipart/form-data">
+
+        <div class="form-floating col-md-6 mb-3">
+            <input type="text" name="title" class="form-control" id="titleInput" placeholder="" required>
+            <label for="titleInput">Title</label>
+            <div class="invalid-feedback">Please enter title</div>
+        </div>
+
+        <div class="form-floating col-md-6 mb-3">
+            <input type="text" name="price" class="form-control" placeholder="" id="priceInput" required>
+            <label for="priceInput" class="form-label">Price</label>
+            <div class="invalid-feedback">Please enter price</div>
+        </div>
+
+        <div class="form-floating mb-3 col-12">
+            <input type="text" name="description" class="form-control" placeholder="" id="descriptionInput" required>
+            <label for="descriptionInput" class="form-label">Description</label>
+            <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <div class="form-floating mb-3 col-md-6">
+            <input type="text" name="location" class="form-control" placeholder="" id="locationInput" required>
+            <label for="locationInput" class="form-label">Location</label>
+            <div class="invalid-feedback">Please enter location</div>
+        </div>
+
+        <div class="form-floating mb-3 col-md-6">
+            <input id="countryInput" class="form-control" name="country" placeholder="" required>
+            <label for="countryInput" class="form-label">Country</label>
+            <div class="invalid-feedback">Please enter country</div>
+        </div>
+
+        <div class="mb-3">
+            <input type="file" name="image" class="form-control" placeholder="" id="imageInput">
+            <label for="imageInput" class="form-label"></label>
+        </div>
+
+        <div class="col-12">
+          <button style="font-weight: 700;" type="submit" class="btn btn-primary">Add Listing</button>
+        </div>
+
+      </form>
+</body>

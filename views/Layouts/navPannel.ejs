@@ -1,0 +1,139 @@
+<style>
+    #filters-nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-inline: 2.5rem !important;
+        align-items: center;
+        background-color: white;
+        /* top: 5rem; */
+        /* border-bottom: solid 1px rgb(215, 215, 215); */
+    }
+    .filter-btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        width: 50rem;
+        overflow-x: scroll;
+        gap: 2rem;
+    }
+    .filter-btns .nav-elements {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgb(104, 104, 104);
+    }
+    .filter-btns .nav-elements:hover {
+        cursor: pointer;
+        color: rgb(0, 0, 0);
+    }
+    .tax-switch-box {
+        border: solid 0.1px rgb(215, 215, 215);
+        padding-inline: 0.5rem;
+        padding-block: 0.8rem;
+        border-radius: 0.7rem;
+        background-color: white;
+        font-weight: 600;
+        margin-top: -1rem;
+    }
+    .tax-switch-box:hover, #main-tax-switch input:hover, #main-tax-switch label:hover {
+        cursor: pointer;
+    }
+    .tax-switch-box:hover {
+        border: solid 0.1px rgb(211, 211, 211);
+        background-color: rgb(247, 247, 247);
+    }
+
+    .filter-btns::-webkit-scrollbar {
+        height: 0px;
+    }
+
+    .filter-btns::-webkit-scrollbar-thumb {
+        background-color: grey; /* Thumb color */
+        border-radius: 0px; /* Thumb border radius */
+    }
+
+    .filter-btns::-webkit-scrollbar-track {
+        background-color: green; /* Track color */
+        border-radius: 0px; /* Track border radius */
+    }
+
+    /* Optional: Hover effect for the thumb */
+    .filter-btns::-webkit-scrollbar-thumb:hover {
+        background-color: grey; /* Thumb color on hover */
+    }
+</style>
+<nav id="filters-nav" class="navbar">
+    <div class="filter-btns">
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-fire"></i>
+            </div>
+            <div>
+                <p>Trending</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-bed"></i>
+            </div>
+            <div>
+                <p>Rooms</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-mountain-city"></i>
+            </div>
+            <div>
+                <p>Iconic Cities</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-mountain"></i>
+            </div>
+            <div>
+                <p>Mountains</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-brands fa-fort-awesome"></i>
+            </div>
+            <div>
+                <p>Castles</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-person-swimming"></i>
+            </div>
+            <div>
+                <p>Amazing Pools</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-tents"></i>
+            </div>
+            <div>
+                <p>Camping</p>
+            </div>
+        </div>
+        <div class="nav-elements">
+            <div>
+                <i class="fa-solid fa-cow"></i>
+            </div>
+            <div>
+                <p>Farms</p>
+            </div>
+        </div>
+    </div>
+    <div class="tax-switch-box">
+        <div id="main-tax-switch" class="form-check-reverse form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+            <label class="form-check-label" for="flexSwitchCheckDefault">Show total before taxes</label>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,108 @@
+<% layout('Layouts/boilerplate.ejs') -%>
+<% if(success) { %>
+    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=success%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<% if(failure) { %>
+    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=failure%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<% if(deleted) { %>
+    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=deleted%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<% if(registered) { %>
+    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=registered%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<% if(validLogin) { %>
+    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=validLogin%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<% if(logout) { %>
+    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+        <b><%=logout%></b>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+<% } %>
+<%- include('../Layouts/navPannel.ejs') %>
+<body>
+    <div class="container-fluid row-md-6" id="cards-container">
+        <% for(let i=0; i<result.length; i++) { %>
+        <a href="http://localhost:3000/listings/<%=result[i]['id']%>">
+            <div class="card">
+                <div style="width: 20rem; height: 19rem;" class="image-holder">
+                    <img style="width: 20rem; height: 19rem;" src="<%=result[i]['image']%>" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <div class="card-extra-details">
+                        <h6 class="card-title"><%=result[i]['title']%></h6>
+                        <span style="font-size: 15px;" class="card-text"><svg style="position: relative;top: -3; left: -2;" fill="#6b6b6b" xmlns="http://www.w3.org/2000/svg" height="15" width="20" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg> <%=result[i]['location']%>,   <%=result[i]['country']%></span>
+                    </div>
+                    <div class="card-price-location-info">
+                        <p style="font-weight: 700;">
+                            &#8377;
+                            <span id="priceBeforeTax">
+                                <%=result[i]['price'].toLocaleString("en-IN")%>/night
+                            </span>
+                            <span id="priceAfterTax" style="display: none;">
+                                <%=(result[i]['price'] + ((result[i]['price']*18)/100)).toLocaleString("en-IN")%>/night
+                            </span>
+                        </p>
+                        <p style="display: flex; flex-direction: row; align-items: center;">
+                            <% if(avgRatingArr[i] > 0) { %>
+                                <img src="StyleSheets/ratingStar.svg" alt="">&nbsp;<%=avgRatingArr[i].toPrecision(2)%>
+                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <% } %>
+    </div>
+
+    <script>
+        let btn = document.getElementById('flexSwitchCheckDefault');
+        let count = 0;
+        let beforeTaxes = document.querySelectorAll('#priceBeforeTax');
+        let afterTaxes = document.querySelectorAll('#priceAfterTax');
+        let filterBtns = document.querySelectorAll('.nav-elements');
+        let listings = document.querySelectorAll('.card');
+        let listingsAvgRating = document.querySelectorAll('.card .card-body .card-price-location-info');
+
+        btn.addEventListener('click',()=>{
+            if(count % 2 == 0) {
+                for(let i = 0; i < beforeTaxes.length; i++) {
+                    beforeTaxes[i].style.display = "none";
+                    afterTaxes[i].style.display = "contents";
+                }
+            } else {
+                for(let i = 0; i < beforeTaxes.length; i++) {
+                    afterTaxes[i].style.display = "none";
+                    beforeTaxes[i].style.display = "contents";
+                }
+            }
+            count++;
+        });
+        // filterBtns[0].addEventListener('click',()=>{
+        //     for(let i = 0; i < listingsAvgRating.length; i++) {
+        //         let x = parseInt(listingsAvgRating[i].lastElementChild.innerText);
+        //         if(x < 4) {
+        //             listings[i].style.display = "none";
+        //         } else if(listingsAvgRating[i].lastElementChild.innerText == '') {
+        //             listings[i].style.display = "none";
+        //         }
+        //     }
+        // });     
+    </script>
+</body>
