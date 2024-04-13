@@ -1,36 +1,36 @@
 <% layout('Layouts/boilerplate.ejs') -%>
 <% if(success) { %>
-    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert-success alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=success%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(failure) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=failure%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(deleted) { %>
-    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=deleted%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(registered) { %>
-    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=registered%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(validLogin) { %>
-    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=validLogin%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(logout) { %>
-    <div class="alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-success alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=logout%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>

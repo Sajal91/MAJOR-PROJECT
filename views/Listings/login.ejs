@@ -1,43 +1,79 @@
+<style>
+    @media (max-width: 700px) {
+        #login-heading, #login-form {
+            margin-inline: 2rem !important;
+        }
+        #login-heading {
+            margin-inline: 2.5rem !important;
+            margin-bottom: 2rem;
+            font-family: 'Salsa', cursive;
+        }
+    }
+    
+    @media (min-width: 701px) and (max-width: 1000px) {
+        #login-heading, #login-form {
+            margin-inline: 8rem !important;
+        }
+        #login-heading {
+            margin-inline: 8rem !important;
+            margin-bottom: 2rem;
+            font-family: 'Salsa', cursive;
+        }
+    }
+    
+    @media (min-width: 1001px) {
+        #login-heading, #login-form {
+            margin-inline: 14rem !important;
+        }
+        #login-heading {
+            margin-inline: 14rem !important;
+            margin-bottom: 2rem;
+            font-family: 'Salsa', cursive;
+        }
+    }
+
+</style>
+
 <% layout('Layouts/boilerplate.ejs') -%>
 <% if(noUser) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noUser%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(noNewListing) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noNewListing%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(noUpdateListing) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noUpdateListing%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(noDeleteListing) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noDeleteListing%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(noReview) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noReview%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <% if(noDeleteReview) { %>
-    <div class="alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
+    <div class="flash-box alert alert-danger alert-dismissible fade show col-8 offset-2" role="alert">
         <b><%=noDeleteReview%></b>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 <% } %>
 <body>
-    <h2 style="margin-top: 8rem;" id="newListing-heading">Login Form</h2>
-    <form style="margin-bottom: 10rem;" id="newListing-form" action="/login" class="row g-3 needs-validation" novalidate method="post">
+    <h2 style="margin-top: 8rem;" id="login-heading">Login Form</h2>
+    <form style="margin-bottom: 10rem;" id="login-form" action="/login" class="row g-3 needs-validation" novalidate method="post">
 
         <div class="form-floating col-md-12 mb-3">
             <input type="text" name="username" class="form-control" placeholder="" id="usernameInput" required>
