@@ -18,8 +18,8 @@
     }
     
     @media (max-width: 607px) {
-        .card {
-            margin-bottom: 4rem;
+        #listing {
+            margin-bottom: 4rem !important;
         }
         #img-holder {
             width: 20rem; 
@@ -129,7 +129,7 @@
 <body>
     <div class="container" id="cards-container">
         <h1 id="heading" class="card"><%=result['title']%></h1>
-        <div class="card">
+        <div class="card" id="listing">
             <div id="img-holder">
                 <img src="<%=result['image']%>" class="card-img-top">
             </div>
