@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
+const {sampleListings} = require('./MODELS/sampleListings.js');
 const Listing = require('./MODELS/listing.js');
 const port = 3000;
 const ejsMate = require('ejs-mate');
@@ -110,10 +111,6 @@ main()
 app.listen(port,()=>{
     console.log(`server is live at ${port}`);
 });
-
-// app.get('/',(request,response)=>{
-//     response.send('site working');
-// });
 
 app.get('/listings',async(request,response,next)=>{
     Listing.find().populate('reviews')
