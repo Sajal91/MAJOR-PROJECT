@@ -171,6 +171,7 @@ app.post('/signup',async(request,response,next)=>{
     try {
         let {password} = request.body;
         let newUser = new User(request.body);
+        newUser.pass = password;
         let result = await User.register(newUser,password);
         console.log(result);
         request.login(result,(err)=>{
