@@ -39,7 +39,7 @@ module.exports.listingGet = async(request,response,next)=>{
                 response.render('Listings/listing.ejs',{result, temp, authenticated, mapKey, coordinates});
             }
         } catch(error) {
-            next(new customError(404,'Page not found'));
+            next(new customError(404, 'Page not Found'));
             console.log(error);
         }
     }
