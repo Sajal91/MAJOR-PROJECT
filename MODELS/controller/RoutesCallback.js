@@ -32,7 +32,7 @@ module.exports.listingGet = async(request,response,next)=>{
                 }
 
                 let coordinates;
-                fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&key=${mapKey}`)
+                fetch(`http://dev.virtualearth.net/REST/v1/Locations?q=${result.location}%20${result.country}&o=&key=${mapKey}`)
                 .then((result1)=>{
                     result1.json()
                     .then((result2)=>{
