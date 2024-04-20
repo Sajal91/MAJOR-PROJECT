@@ -19,11 +19,12 @@ module.exports.listingGet = async(request,response,next)=>{
             } else {
                 // console.log(result);
 
-                let data = await fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&key=${process.env.BING_MAP_API_KEY}`);
+                let data = await fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&maxResults=1&key=${process.env.BING_MAP_API_KEY}`);
                 
                 let locationData = await data.json();
 
-                let coordinates = locationData.resourceSets[0].resources[0].geocodePoints[0].coordinates;
+                let coordinates = locationData.resourceSets[0].resources[0].point.coordinates;
+                console.log(coordinates);
 
                 if(request.isAuthenticated()) {
                     authenticated = true;
