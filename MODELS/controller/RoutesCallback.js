@@ -18,13 +18,7 @@ module.exports.listingGet = async(request,response,next)=>{
                 response.redirect('/listings');
             } else {
                 // console.log(result);
-
-                let data = await fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&maxResults=1&key=${process.env.BING_MAP_API_KEY}`);
                 
-                let locationData = await data.json();
-
-                let coordinates = locationData.resourceSets[0].resources[0].point.coordinates;
-                console.log(coordinates);
 
                 if(request.isAuthenticated()) {
                     authenticated = true;
@@ -36,10 +30,24 @@ module.exports.listingGet = async(request,response,next)=>{
                 } else {
                     temp = false;
                 }
-                response.render('Listings/listing.ejs',{result, temp, authenticated, mapKey, coordinates});
+
+                let coordinates;
+                fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&key=${mapKey}`)
+                .then((result1)=>{
+                    result1.json()
+                    .then((result2)=>{
+                        coordinates = result2.resourceSets[0].resources[0].geocodePoints[0].coordinates;
+                        console.log(coordinates);
+                        response.render('Listings/listing.ejs',{result, temp, authenticated, mapKey, coordinates});
+                    }).catch((error)=>{
+                        console.log(error);
+                    });
+                }).catch((error)=>{
+                    console.log(error);
+                });
             }
         } catch(error) {
-            next(new customError(404, 'Page not Found'));
+            next(new customError(404,'Page not found'));
             console.log(error);
         }
     }
