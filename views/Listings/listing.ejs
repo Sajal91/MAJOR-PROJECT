@@ -108,6 +108,16 @@
         }
     }
 
+    #map-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+    }
+
+    #myMap {
+        height: 25rem;
+    }
+
 </style>
 
 <% layout('Layouts/boilerplate.ejs') %>
@@ -227,6 +237,35 @@
 
     <% } %>
 
-    <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&loading=async&callback=initMap">
+    <div id="map-container">
+        <div id="myMap" class="card">
+
+        </div>
+    </div>
+
+    <script type='text/javascript'>
+        let lat = <%=coordinates[0]%>;
+        let long = <%=coordinates[1]%>;
+        function GetMap() {
+            let map = new Microsoft.Maps.Map('#myMap',{
+                center: new Microsoft.Maps.Location(lat, long),
+                mapTypeId: Microsoft.Maps.MapTypeId.road,
+                zoom: 15,
+                showZoomButtons: false,
+                disableMapTypeSelectorMouseOver: true,
+                showMapTypeSelector: false
+            });
+            let center = map.getCenter();
+
+            //Create custom Pushpin
+            let pin = new Microsoft.Maps.Pushpin(center, {
+                title: `<%=result['title']%>`,
+            });
+
+            //Add the pushpin to the map
+            map.entities.push(pin);
+        }
     </script>
+
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=<%=mapKey%>' async defer></script>
 </body>

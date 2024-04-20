@@ -1,6 +1,7 @@
 const Listing = require('../listing.js');
 const review = require('../review.js');
 const customError = require('../customError.js');
+require('dotenv');
 
 module.exports.listingGet = async(request,response,next)=>{
     let {id} = request.params;
@@ -11,11 +12,19 @@ module.exports.listingGet = async(request,response,next)=>{
     } else {
         try {
             let result = await Listing.findById(id).populate({path: "reviews", populate: {path: "author"}}).populate("owner");
+            let mapKey = process.env.BING_MAP_API_KEY;
             if(!result) {
                 request.flash("failure","Listing Not Found");
                 response.redirect('/listings');
             } else {
                 // console.log(result);
+
+                let data = await fetch(`http://dev.virtualearth.net/REST/v1/Locations/${result.location}%20${result.country}?o=&key=${process.env.BING_MAP_API_KEY}`);
+                
+                let locationData = await data.json();
+
+                let coordinates = locationData.resourceSets[0].resources[0].geocodePoints[0].coordinates;
+
                 if(request.isAuthenticated()) {
                     authenticated = true;
                     if(request.user.id == result.owner.id) {
@@ -26,7 +35,7 @@ module.exports.listingGet = async(request,response,next)=>{
                 } else {
                     temp = false;
                 }
-                response.render('Listings/listing.ejs',{result, temp, authenticated});
+                response.render('Listings/listing.ejs',{result, temp, authenticated, mapKey, coordinates});
             }
         } catch(error) {
             next(new customError(404,'Page not found'));
