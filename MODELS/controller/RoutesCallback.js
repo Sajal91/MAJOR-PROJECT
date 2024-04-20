@@ -32,7 +32,7 @@ module.exports.listingGet = async(request,response,next)=>{
                 }
 
                 let coordinates;
-                fetch(`http://dev.virtualearth.net/REST/v1/Locations?q=${result.location}%20${result.country}&o=&key=${mapKey}`)
+                fetch(`http://dev.virtualearth.net/REST/v1/Locations?q=${result.location}%20${result.country}&o=&maxResults=1&key=${mapKey}`)
                 .then((result1)=>{
                     result1.json()
                     .then((result2)=>{
@@ -99,11 +99,6 @@ module.exports.updatePost = async(request,response,next)=>{
     console.log('values updated');
     request.flash('updated','Listing Updated');
     response.redirect(`/listings/${id}`);
-    if(request.file.path) {
-        let listing = await Listing.findById(id);
-        listing.image = request.file.path;
-        listing.save();
-    }
 };
 
 module.exports.deleteListingPost = async(request,response,next)=>{

@@ -161,7 +161,7 @@ app.get('/logout',async(request,response,next)=>{
     })
 });
 
-app.post('/listings/:id/update/',upload.single('image'),updatePost);
+app.post('/listings/:id/update/',updatePost);
 
 app.post('/listings/new/listing',upload.single('image'),newListingPost);
 
