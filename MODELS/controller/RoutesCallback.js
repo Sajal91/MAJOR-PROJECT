@@ -74,7 +74,7 @@ module.exports.deleteListingGet = async(request,response)=>{
     }
 };
 
-module.exports.updatePost = async(request,response,next)=>{
+module.exports.updatePost = async(request,response)=>{
     let updatedValues = request.body;
     let {id} = request.params;
     await Listing.findByIdAndUpdate(id, updatedValues);

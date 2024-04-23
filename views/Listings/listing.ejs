@@ -244,13 +244,35 @@
     </div>
     
     <script>
-        let map;
+        let map, Marker1;
         function initMap1() {
-            let map = new mappls.Map('map', {
-                center: {
-                    lat: 28.612964, lng: 77.229463
-                }
+            let latitude, longitude;
+            let data = fetch('https://geocode.maps.co/search?q=<%=result['location']%>,<%=result['country']%>&api_key=66276558db746724489350gdq76f256')
+            .then((data)=>{
+                data.json()
+                .then((result)=>{
+                    latitude = result[0].lat;
+                    longitude = result[0].lon;
+                    let map = new mappls.Map('map', {
+                        center: [ latitude, longitude ],
+                        disableDoubleClickZoom: true,
+                        traffic: true,
+                        zoom: 15
+                    });
+                    Marker1 = new mappls.Marker({
+                        map: map,
+                        position: {
+                        "lat": latitude,
+                        "lng": longitude
+                        },
+                        // fitbounds: true,
+                        icon_url: 'https://apis.mapmyindia.com/map_v3/1.png'
+                    });
+                })
             });
+            // console.log(latitude);
+            // console.log(longitude);
+            
         }
     </script>
 
