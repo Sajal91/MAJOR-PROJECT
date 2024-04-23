@@ -28,7 +28,9 @@ module.exports.listingGet = async(request,response,next)=>{
                 } else {
                     temp = false;
                 }
-                response.render('Listings/listing.ejs',{result, temp, authenticated});
+                let GEO_CODING_API_KEY = process.env.GEO_CODING_API_KEY;
+                let MAPPLS_API_KEY = process.env.MAPPLS_API_KEY;
+                response.render('Listings/listing.ejs',{result, temp, authenticated, MAPPLS_API_KEY, GEO_CODING_API_KEY});
             }
         } catch(error) {
             next(new customError(404,'Page not found'));
