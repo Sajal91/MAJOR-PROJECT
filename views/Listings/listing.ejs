@@ -244,11 +244,11 @@
     </div>
     
     <script>
-        // require('dotenv');
+        require('dotenv');
         let map, Marker1;
         function initMap1() {
             let latitude, longitude;
-            let data = fetch(`https://geocode.maps.co/search?q=<%=result['location']%>,<%=result['country']%>&api_key=66276558db746724489350gdq76f256`)
+            let data = fetch(`https://geocode.maps.co/search?q=<%=result['location']%>,<%=result['country']%>&api_key=<%=GEO_CODING_API_KEY%>`)
             .then((data)=>{
                 data.json()
                 .then((result)=>{

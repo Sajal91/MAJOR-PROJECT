@@ -40,8 +40,8 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: true,
     cookie: {
-        expires: Date.now() + 60000,
-        maxAge: 60000,
+        expires: Date.now() + 600000,
+        maxAge: 600000,
         httpOnly: true
     },
 };
