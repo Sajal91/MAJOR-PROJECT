@@ -110,23 +110,32 @@ module.exports.deleteListingPost = async(request,response,next)=>{
     }
 };
 
-module.exports.newListingPost = async(request,response,next)=>{
+module.exports.newListingPost = wrapAsync(async(request,response,next)=>{
     if(request.isAuthenticated()) {
         let newListing = new Listing(request.body);
         newListing.owner = request.user.id;
-        newListing.image = request.file.path;
-        request.flash('success','New Listing Created');
-        newListing.save()
-        .then(()=>{
-            console.log('new listing created');
-            response.redirect('/listings');
-        }).catch(()=>{
-            next(new customError(400,'something went wrong'));
-        });
+        // if(request.file.path) {
+        //     newListing.image = request.file.path;
+        // } else {
+        //     newListing.image = process.env.PRIMARY_IMAGE_URL;
+        // }
+        try {
+            newListing.image = request.file.path;
+            request.flash('success','New Listing Created');
+            newListing.save()
+            .then(()=>{
+                console.log('new listing created');
+                response.redirect('/listings');
+            }).catch(()=>{
+                next(new customError(400,'something went wrong'));
+            });
+        } catch(err) {
+            next(new customError(200,'Provide an Image'));
+        }
     } else {
         next(new customError(300,'User not logged in'));
     }
-};
+});
 
 module.exports.addReviewPost = async(request,response)=>{
     if(request.isAuthenticated()) {
