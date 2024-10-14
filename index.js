@@ -15,7 +15,7 @@ const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const { listingGet, updateGet, newListingGet, deleteListingGet,updatePost, deleteListingPost, newListingPost, addReviewPost, deleteReviewPost } = require('./MODELS/controller/RoutesCallback.js');
+const { listingGet, updateGet, newListingGet, deleteListingGet,updatePost, deleteListingPost, newListingPost, addReviewPost, deleteReviewPost, filteredListingGet } = require('./MODELS/controller/RoutesCallback.js');
 const multer = require('multer');
 require('dotenv').config();
 const { storage } = require('./MODELS/cloud-config.js');
@@ -105,6 +105,7 @@ main()
 .then(()=>{
     console.log('database connected successfully');
 }).catch(()=>{
+    throw new customError(404, 'an error occured while connecting to database')
     console.log('an error occured while connecting to database');
 });
 
@@ -141,6 +142,8 @@ app.get('/listings/:id/update',updateGet);
 app.get('/listings/new/listing',newListingGet);
 
 app.get('/listings/:id/delete',deleteListingGet);
+
+app.get('/listings/filtered-listings/:property',filteredListingGet);
 
 app.get('/signup',(request,response)=>{
     response.render('Listings/signup.ejs');

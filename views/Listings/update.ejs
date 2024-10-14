@@ -32,6 +32,21 @@
             <div class="invalid-feedback">Please enter country</div>
         </div>
 
+        <div class="mb-3 col-md-12">
+            <select class="form-select" aria-label="Default select example" name="propertyType" required>
+                <option selected value="<%=result['propertyType']%>"><%=result['propertyType']%></option>
+                <option value="Trending">Trending</option>
+                <option value="Rooms">Rooms</option>
+                <option value="Iconic Cities">Iconic Cities</option>
+                <option value="Mountains">Mountains</option>
+                <option value="Castles">Castles</option>
+                <option value="Amazing Pools">Amazing Pools</option>
+                <option value="Camping">Camping</option>
+                <option value="Farms">Farms</option>
+            </select>
+            <div class="invalid-feedback">Please select a property type</div>
+        </div>
+
         <!-- <div class="mb-3">
             <input type="file" name="image" class="form-control" placeholder="" id="imageInput">
             <label for="imageInput" class="form-label"></label>

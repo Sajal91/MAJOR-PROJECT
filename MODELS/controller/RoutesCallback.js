@@ -76,11 +76,31 @@ module.exports.deleteListingGet = async(request,response)=>{
     }
 };
 
+module.exports.filteredListingGet = async(request, response) => {
+    let {property} = request.params
+    // console.log(property)
+    Listing.find({propertyType: property})
+    .then((result)=>{
+        let avgRatingArr = [];
+        for(let i = 0; i < result.length; i++) {
+            let ratingSum = 0;
+            for(let j = 0; j < result[i].reviews.length; j++) {
+                ratingSum = ratingSum + result[i].reviews[j].rating;
+            }
+            let avgRating = ratingSum/result[i].reviews.length;
+            avgRatingArr.push(avgRating);
+        }
+        response.render('Listings/home.ejs', {result, avgRatingArr})
+        // console.log(result)
+    })
+}
+
 module.exports.updatePost = async(request,response)=>{
     let updatedValues = request.body;
     let {id} = request.params;
-    await Listing.findByIdAndUpdate(id, updatedValues);
+    let res = await Listing.findByIdAndUpdate(id, updatedValues);
     console.log('values updated');
+    // console.log(res);
     request.flash('updated','Listing Updated');
     response.redirect(`/listings/${id}`);
 };

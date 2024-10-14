@@ -26,6 +26,9 @@
         cursor: pointer;
         color: rgb(0, 0, 0);
     }
+    .filter-btns .nav-elements p {
+        margin-bottom: 0;
+    }
     .tax-switch-box {
         border: solid 0.1px rgb(215, 215, 215);
         padding-inline: 0.5rem;
@@ -70,76 +73,99 @@
 
 </style>
 <nav id="filters-nav" class="navbar">
-    <div class="filter-btns">
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-fire"></i>
-            </div>
-            <div>
-                <p>Trending</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-bed"></i>
-            </div>
-            <div>
-                <p>Rooms</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-mountain-city"></i>
-            </div>
-            <div>
-                <p>Iconic Cities</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-mountain"></i>
-            </div>
-            <div>
-                <p>Mountains</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-brands fa-fort-awesome"></i>
-            </div>
-            <div>
-                <p>Castles</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-person-swimming"></i>
-            </div>
-            <div>
-                <p>Amazing Pools</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-tents"></i>
-            </div>
-            <div>
-                <p>Camping</p>
-            </div>
-        </div>
-        <div class="nav-elements">
-            <div>
-                <i class="fa-solid fa-cow"></i>
-            </div>
-            <div>
-                <p>Farms</p>
-            </div>
-        </div>
-    </div>
+    <ul class="nav nav-underline filter-btns">
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Trending" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-fire"></i>
+                </div>
+                <div>
+                    <p>Trending</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Rooms" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-bed"></i>
+                </div>
+                <div>
+                    <p>Rooms</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Iconic Cities" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-mountain-city"></i>
+                </div>
+                <div>
+                    <p>Iconic Cities</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Mountains" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-mountain"></i>
+                </div>
+                <div>
+                    <p>Mountains</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Castles" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-brands fa-fort-awesome"></i>
+                </div>
+                <div>
+                    <p>Castles</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Amazing Pools" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-person-swimming"></i>
+                </div>
+                <div>
+                    <p>Amazing Pools</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Camping" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-tents"></i>
+                </div>
+                <div>
+                    <p>Camping</p>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="/listings/filtered-listings/Farms" class="nav-elements nav-link">
+                <div>
+                    <i class="fa-solid fa-cow"></i>
+                </div>
+                <div>
+                    <p>Farms</p>
+                </div>
+            </a>
+        </li>
+    </ul>
     <div class="tax-switch-box">
-        <div id="main-tax-switch" class="form-check-reverse form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
-            <label class="form-check-label" for="flexSwitchCheckDefault">Show total before taxes</label>
-        </div>
+        <!-- <div id="main-tax-switch" class="form-check-reverse form-switch"> -->
+            <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+            <label class="form-check-label" for="flexSwitchCheckDefault">Show total before taxes</label> -->
+            <label class="c-toggle c-toggle--info">
+                Price Before Taxes
+                <input type="checkbox" id="flexSwitchCheckDefault" checked>
+                <div class="c-toggle__track">
+                  <div class="c-toggle__handle"></div>
+                </div>
+            </label>
+        <!-- </div> -->
     </div>
 </nav>
