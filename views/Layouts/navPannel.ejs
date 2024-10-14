@@ -7,13 +7,15 @@
         background-color: white;
         width: 90%;
         margin-inline: auto;
+        gap: 2rem;
     }
     .filter-btns {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
-        width: 50rem;
+        width: 20rem;
         overflow-x: scroll;
+        flex-wrap: nowrap;
         gap: 2rem;
     }
     .filter-btns .nav-elements {
@@ -73,7 +75,7 @@
 
 </style>
 <nav id="filters-nav" class="navbar">
-    <ul class="nav nav-underline filter-btns">
+    <div class="filter-btns nav nav-underline">
         <li class="nav-item">
             <a href="/listings/filtered-listings/Trending" class="nav-elements nav-link">
                 <div>
@@ -154,7 +156,7 @@
                 </div>
             </a>
         </li>
-    </ul>
+    </div>
     <div class="tax-switch-box">
         <!-- <div id="main-tax-switch" class="form-check-reverse form-switch"> -->
             <!-- <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
